@@ -1,0 +1,17 @@
+*, *::after, *::before {
+    
+    box-sizing: border-box;
+    
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: normal;
+
+}
+
+body {
+
+    margin: 0;
+    padding: 0;
+
+    background: linear-gradient(to right, #caf0f8, #0096c7);
+
+}

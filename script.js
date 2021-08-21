@@ -101,10 +101,51 @@ class Calculator {
 
     }
     
+    getDisplayedNumber(number) {
+
+        const stringNumber = number.toString();
+        const integerDigits = parseFloat(stringNumber.split('.')[0]);
+        const decimalDigits = stringNumber.split('.')[1];
+        let integerDisplay
+
+        if(isNaN(integerDigits)) { // ** verifying integer digits
+            
+            integerDisplay = '';
+            
+        } else {
+
+            integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 });
+
+        }
+
+        if(decimalDigits != null) { // ** verifying decimal digits
+
+            return `${integerDisplay}.${decimalDigits}`
+
+        } else {
+
+            return integerDisplay
+
+        }
+
+
+    }
+
     updateDisplay() {
     
-        this.currentOperandTextElement.innerText = this.currentOperand;
-        this.previousOperandTextElement.innerText = this.previousOperand;
+        this.currentOperandTextElement.innerText = this.getDisplayedNumber(this.currentOperand);
+
+        if(this.operation != null) {
+
+            this.previousOperandTextElement.innerText = 
+                `${this.getDisplayedNumber(this.previousOperand)} ${this.operation}`;
+
+        } else {
+
+            this.previousOperandTextElement.innerText = '';
+
+        }
+
     
     }
     
